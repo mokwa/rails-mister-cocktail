@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @dose.description %>
+</p>
+
+<p>
+  <strong>Cocktail:</strong>
+  <%= @dose.cocktail_id %>
+</p>
+
+<p>
+  <strong>Ingredient:</strong>
+  <%= @dose.ingredient_id %>
+</p>
+
+<%= link_to 'Edit', edit_dose_path(@dose) %> |
+<%= link_to 'Back', doses_path %>
