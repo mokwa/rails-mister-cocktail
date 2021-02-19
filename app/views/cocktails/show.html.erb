@@ -2,11 +2,18 @@
 
 <p>
   <h2><%= @cocktail.name %></h2>
+  <!-- only want to display the photos if the instance has them, otherwise our code will break -->
+  <% if @cocktail.images.attached? %>
+    <% @cocktail.images.each do |image| %>
+      <%= cl_image_tag(image.key, width: 400, height: 300, crop: :fill) %>
+    <% end %>
+  <% end %>
+
   <% @cocktail.doses.each do |dose| %>
     <h3><%= dose.description%> - <%= dose.ingredient.name%></h3>
   <% end %>
 </p>
 
-<%= link_to 'New Dose', new_cocktail_dose_path(@cocktail)  %>
+
 <%= link_to 'Edit', edit_cocktail_path(@cocktail) %> |
 <%= link_to 'Back', cocktails_path %>

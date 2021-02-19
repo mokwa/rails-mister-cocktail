@@ -8,23 +8,38 @@
 
 <div class="container">
   <h1>OUR SPECIALITIES</h1>
+  <div class="d-flex justify-content-around">
+    <% @cocktails.each do |cocktail| %>
 
-  <% @cocktails.each do |cocktail| %>
+      <div class="main-card" style="width: 18rem;">
+        <% if cocktail.images.attached? %>
+          <%= cl_image_tag(cocktail.images.first.key, class: 'card-image') %>
+          <%= link_to 'Details', cocktail , class: 'details'%>
 
-    <div class="main-card" style="width: 18rem;">
-      <%= image_tag("1.jpg", :alt => "rss feed", class:"card-img-top") %>
-      <div class="card-body">
-        <h5 class="card-title"><%= cocktail.name %></h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <p><%= link_to 'Show', cocktail %></p>
-        <p><%= link_to 'Edit', edit_cocktail_path(cocktail), class: 'btn btn-primary' %></p>
-        <p><%= link_to 'Destroy', cocktail, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= cocktail.name %></h5>
+          <div class="card-text">
+
+          <% cocktail.doses.each do |dose| %>
+            <p><%= dose.ingredient.name%></p>
+          <% end %>
+          </div>
+
+          <div class="d-flex justify-content-around">
+
+            <p><i class="far fa-edit"></i><%= link_to 'Edit', edit_cocktail_path(cocktail) %></p>
 
 
+            <div class="delete-icon"><%= link_to '', cocktail, method: :delete, class: 'far fa-trash-alt', data: { confirm: 'Are you sure?' } %></div>
+          </div>
+
+
+
+        </div>
       </div>
-    </div>
-  <% end %>
-
+    <% end %>
+  </div>
 
   <%= link_to 'New Cocktail', new_cocktail_path %>
 </div>

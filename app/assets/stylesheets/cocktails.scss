@@ -27,5 +27,30 @@ h1{
   background-clip: border-box;
   border: 1px solid #ccc;
   border-radius: 2px;
-  margin: 0 10px;
+  margin: -1 10px;
 }
+
+.card-image{
+
+}
+
+.details{
+  display: none;
+}
+.card-image:hover{
+  filter: brightness(50%);
+}
+
+.delete-icon{
+  position: absolute;
+}
+
+.delete-icon a{
+  color: #ccc;
+}
+
+.delete-icon a:hover{
+  text-decoration: none;
+
+}
+
