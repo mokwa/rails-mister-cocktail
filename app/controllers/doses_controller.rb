@@ -1,36 +1,31 @@
 class DosesController < ApplicationController
   before_action :set_dose, only: %i[ show edit update destroy ]
 
-  # GET /doses or /doses.json
-  def index
-    @doses = Dose.all
-  end
-
-  # GET /doses/1 or /doses/1.json
-  def show
-  end
-
   # GET /doses/new
   def new
+    # we need @cocktail in our `simple_form_for`
+    @cocktail = Cocktail.find(params[:cocktail_id])
     @dose = Dose.new
-  end
-
-  # GET /doses/1/edit
-  def edit
   end
 
   # POST /doses or /doses.json
   def create
     @dose = Dose.new(dose_params)
+    # params[:cocktail_id] = params[:dose][:cocktail_id]
+    # puts params
+    unless params[:cocktail_id]
+      params[:cocktail_id] = params[:dose][:cocktail_id]
+    end
 
-    respond_to do |format|
-      if @dose.save
-        format.html { redirect_to @dose, notice: "Dose was successfully created." }
-        format.json { render :show, status: :created, location: @dose }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @dose.errors, status: :unprocessable_entity }
-      end
+     # we need `cocktail_id` to associate dose with corresponding cocktail
+    @cocktail = Cocktail.find(params[:cocktail_id])
+
+    @dose.cocktail = @cocktail
+
+    if @dose.save
+      redirect_to cocktail_path(@cocktail)
+    else
+      render :new
     end
   end
 

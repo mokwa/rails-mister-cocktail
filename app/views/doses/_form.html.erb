@@ -5,9 +5,11 @@
 
   <div class="form-inputs">
     <%= f.input :description %>
-    <%= f.association :cocktail %>
+    <!-- <%= f.association :cocktail %> -->
     <%= f.association :ingredient %>
   </div>
+  <%= f.input :cocktail_id, as: :hidden, input_html: { value: params[:cocktail_id] } %>
+
 
   <div class="form-actions">
     <%= f.button :submit %>

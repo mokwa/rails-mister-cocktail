@@ -3,3 +3,5 @@
 <%= render 'form', dose: @dose %>
 
 <%= link_to 'Back', doses_path %>
+
+<%= link_to 'Edit', edit_cocktail_path(params["cocktail_id"]) %>
