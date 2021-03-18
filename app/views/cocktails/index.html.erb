@@ -1,45 +1,23 @@
-<div class="banner">
-  <div class="container align-middle">
-  <h1 >JULIANA'S COCKTAILS</h1>
-</div>
-
-
-</div>
 
 <div class="container">
   <h1>OUR SPECIALITIES</h1>
-  <div class="d-flex justify-content-around">
+  <div class="row d-flex">
+
     <% @cocktails.each do |cocktail| %>
-
-      <div class="main-card" style="width: 18rem;">
+      <div class="col-12 col-md-6 col-lg-3 mt-4">
+      <%= link_to cocktail, class:'card' do %>
         <% if cocktail.images.attached? %>
-          <%= cl_image_tag(cocktail.images.first.key, class: 'card-image') %>
-          <%= link_to 'Details', cocktail , class: 'details'%>
-
+          <%= cl_image_tag(cocktail.images.first.key, class: 'card-img-top') %>
         <% end %>
         <div class="card-body">
-          <h5 class="card-title"><%= cocktail.name %></h5>
-          <div class="card-text">
-
-          <% cocktail.doses.each do |dose| %>
-            <p><%= dose.ingredient.name%></p>
-          <% end %>
-          </div>
-
-          <div class="d-flex justify-content-around">
-
-            <p><i class="far fa-edit"></i><%= link_to 'Edit', edit_cocktail_path(cocktail) %></p>
-
-
-            <div class="delete-icon"><%= link_to '', cocktail, method: :delete, class: 'far fa-trash-alt', data: { confirm: 'Are you sure?' } %></div>
-          </div>
-
-
-
+          <h2 class="card-title text-center"><%= cocktail.name %></h2>
         </div>
+      <% end %>
       </div>
     <% end %>
-  </div>
 
-  <%= link_to 'New Cocktail', new_cocktail_path %>
+
+  </div>
+  <h3 class="mt-5">Didn't find what you wanted? </h3>
+  <%= link_to 'Create your own cocktail', new_cocktail_path, class:"btn btn-dark"  %>
 </div>

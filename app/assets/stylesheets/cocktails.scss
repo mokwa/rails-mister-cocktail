@@ -1,56 +1,58 @@
 // Place all the styles related to the Cocktails controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+body, html {
+  height: 100%;
+  background: #0E0000;
+  color: #666699;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.home-grid{
+  display: grid;
+  grid-template-columns: 70% auto;
+  padding-top: 18%;
+}
+
+.bg{
+  background-image: url("home.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 h1{
   font-family: 'Boogaloo', cursive;
   font-size: 30px;
-    text-align: center;
-    padding: 20px;
+  text-align: center;
+  padding: 20px;
   }
 
-
-.main-card{
-  position: relative;
+.cards{
   display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-
+  flex-wrap: nowrap
 }
 
-.card-body{
-  flex: 1 1 auto;
-  min-height: 1px;
-  padding: 1.25rem;
-  background-color: white;
-  background-clip: border-box;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  margin: -1 10px;
+.card{
+  height: 400px;
+  color: #666699;
+  background-color: #232526;
 }
 
-.card-image{
-
+.card:hover{
+  color: #a3a3c2;
 }
 
-.details{
-  display: none;
-}
-.card-image:hover{
-  filter: brightness(50%);
+.card-img-top{
+  height: 80%;
 }
 
-.delete-icon{
-  position: absolute;
-}
-
-.delete-icon a{
-  color: #ccc;
-}
-
-.delete-icon a:hover{
+.card a:hover{
   text-decoration: none;
-
 }
 
